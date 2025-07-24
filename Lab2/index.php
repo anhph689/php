@@ -76,5 +76,100 @@ $hocSinh = array(
 $hocSinhBatKy = $hocSinh[1];
 echo "Tên học sinh: " . $hocSinhBatKy["ten"] . "<br>";
 echo "Tuổi: " . $hocSinhBatKy["tuoi"] . " tuổi<br>";
-echo "Điểm số: " . $hocSinhBatKy["diem"];
+echo "Điểm số: " . $hocSinhBatKy["diem"] . "<br>";
+
+//7. Sử dụng cấu trúc điều kiện if-else
+$soNguyen = 25;
+if($soNguyen % 2 == 0){
+    echo $soNguyen . " là số chẵn." . "<br>";
+}else{
+    echo $soNguyen . " là số lẻ." . "<br>";
+}
+
+//8. Sử dụng vòng lặp for
+for($i = 1; $i <= 10; $i++){
+    echo "Bảng cửu chương của $i:<br>";
+    for($j = 1; $j <= 10; $j++){
+        $ketQua = $i * $j;
+        echo "$i x $j = $ketQua<br>";
+    }
+    echo "<br>";
+}
+
+//9. Sử dụng vòng lặp while
+$tong = 0;
+$i = 1;
+
+while($i <= 100){
+    $tong += $i;
+    $i++;
+}
+
+echo "Tổng của các số tự nhiên từ 1 đến 100 là: " . $tong . "<br>";
+
+//10. Sử dụng cấu trúc điều kiện switch
+$diem = 85;
+switch(true){
+    case($diem >= 90):
+        $xepLoai = "A";
+        break;
+    case($diem >= 80):
+        $xepLoai = "B";
+        break;
+    case($diem >= 70):
+        $xepLoai = "C";
+        break;
+    case($diem >= 60):
+        $xepLoai = "D";
+        break;
+    default:
+        $xepLoai = "F";
+        break;
+}
+
+echo "Xếp loại của điểm số $diem là: $xepLoai" . "<br>";
+
+//11. Sử dụng cấu trúc điều kiện lồng nhau
+$nam = 2024;
+if(($nam % 4 == 0 && $nam % 100 != 0) || ($nam % 400 == 0)){
+    echo "$nam là năm nhuận." . "<br>";
+}else{
+    echo "$nam không là năm nhuận." . "<br>";
+}
+
+//12. Sử dụng vòng lặp foreach
+$array = array(10, 20, 30, 40, 50);
+$tong = 0;
+
+foreach($array as $so){
+    $tong += $so;
+}
+
+echo "Tổng của các số trong mảng là: " . $tong . "<br>";
+
+//13. Sử dụng vòng lặp do-while
+// $soNguyen = (int)readline("Nhập một số nguyên: ");
+// if($soNguyen <= 0){
+//     echo "Số bạn đã nhập không hợp lệ. Vui lòng nhập một số nguyên dương.";
+// }else{
+//     $i = 1;
+//     do{
+//         $ketQua = $soNguyen * $i;
+//         echo "$soNguyen x $i = $ketQua\n";
+//         $i++;
+//     }while($i <= 10);
+// }
+
+//14. Kết hợp cấu trúc điều kiện và vòng lặp
+for($i = 1; $i <= 100; $i++){
+    if($i % 3 == 0 && $i % 5 == 0){
+        echo "FizzBuzz";
+    }elseif($i % 3 == 0){
+        echo "Fizz";
+    }elseif($i % 5 == 0){
+        echo "Buzz";
+    }else{
+        echo $i . "";
+    }
+}
 ?>

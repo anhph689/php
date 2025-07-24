@@ -1,4 +1,5 @@
 <?php
+//I. Làm quen với PHP
 //1. Lệnh chú thích (Comment)
 //Không biên dịch được trên server
 //Gõ 2 dấu // hoặc /** */ ở đầu hoặc sử dung tổ hợp phím Ctrl + /
@@ -41,7 +42,25 @@
 // echo $null;
 
 //Kiểu dữ liệu chuỗi(String)
-$string = "Hello ";
-$b = "World";
-echo $string .= $b;
+// $string = "Hello ";
+// $b = "World";
+// echo $string .= $b;
+
+//II. Toán tử, kiểu và ép kiểu
+//1. Các toán tử trong PHP
+//Toán tử cộng
+$x = 123 + 45;
+echo $x;
+
+//Toán tử trừ
+$y = 888 - 66;
+
+//Toán tử nhân
+$z = 55 * 16;
+
+//Toán tử chia
+$t = 20 / 3;
+
+//Toán tử lũy thừa
+$k = 4**2;
 ?>

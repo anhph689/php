@@ -178,9 +178,52 @@
  * cách đặt trước kiểu đó bằng dấu chấm hỏi (?)
  * - Kiểu nullable cho phép giữ null ngoài bất kỳ giá trị kiểu nào được chỉ định
  */
-function nullable(?int $i){
-    $i == null ? print 'null' : print 'int';
-};
+// function nullable(?int $i){
+//     $i == null ? print 'null' : print 'int';
+// };
 
-nullable(0);
+// nullable(0);
+
+/**
+ * PHP và HTML
+ * - Người dùng yêu cầu 1 trang (page) bằng cách nhập vào URL
+ * Ví dụ: localhost://php/index.php
+ * - Máy chủ chạy mã index.php (root của site). Kết quả của quá trình này là HTML code
+ * - HTML code được gửi đến client thông qua internet
+ * - HTML code được thông dịch, sau đó kết cuất được hiển thị trong trình duyệt (browser)
+ */
+// print "<html>";
+// print "<head><title>Document</title>";
+// print "<body>";
+// print "<h1>Hello World</h1>";
+// print "</body>";
+// print "</html>";
 ?>
+
+<!-- HTML trong PHP -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+    //print "<h1>Hello World, my name is Hoang Anh</h1>"
+
+    // $a = 25;
+    // $b = 36;
+
+    // if($a > $b){
+    //     echo "Biến a lớn hơn biến b";
+    // }else{
+    //     echo "Biến a nhỏ hơn biến b";
+    // }
+
+    for ($i=0; $i <= 6; $i++) { 
+        echo "Đây là số " . $i . "</br>";
+    }
+    ?>
+</body>
+</html>

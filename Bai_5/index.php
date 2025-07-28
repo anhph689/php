@@ -25,6 +25,13 @@
  * sẽ được sử dụng
  * + Htmlspecialchars vô hiệu hóa bất kỳ đánh dấu HTML nào
  * để đầu vào của người dùng hiển thị nhưng ko đc diễn giải
+ * - Submmiting array:
+ * + Dữ liệu của frm có thể nhóm thành mảng bằng cách sử dụng dấu ngoặc vuông []
+ * phía sau tên biến trong form
+ * + Việc tạo mảng này có thể thực hiện dối với các input của form gồm
+ * <input>, <select> và <textarea>
+ * + Có thể tạo key cho mảng các input
+ * + Lấy mảng dữ liệu được gửi từ form
  */
 // $email = "example@gmail.com";
 // if(filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -33,7 +40,9 @@
 //     echo 'Email không hợp lệ';
 // }
 
-$input = "<script></script>"
+// $input = '<script>alert("Hello");</script>';
+// $output = htmlspecialchars($input);
+// echo $output;
 ?>
 
 <!-- <!DOCTYPE html>
@@ -85,3 +94,31 @@ $input = "<script></script>"
     </form>
 </body>
 </html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        <select name="myArr[]" size="3" multiple="true">
+            <option value="apple">Apple</option>
+            <option value="orange">Orange</option>
+            <option value="pear">Pear</option>
+        </select>
+        <input type="submit" />
+    </form>
+    <?php
+        if(isset($_POST['myArr'])){
+            foreach ($_POST['myArr'] as $value) {
+                echo $value . ' ';
+            }
+        }else{
+            echo 'Không có giá trị';
+        }
+    ?>
+</body>
+</html>

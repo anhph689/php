@@ -111,11 +111,80 @@
  * + $message: nội dung cần gửi
  * + [$headers]: là tham số tùy chọn, có thể được sử dụng gồm CC, BCC
  */
-$to_email_address = 'name@company.com';
-$subject = 'Testing PHP mail';
-$message = 'This mail is sent using the PHP mail function';
-$headers = 'from: testing@company.com';
-mail($to_email_address, $message, $headers);
+// $to_email_address = 'name@company.com';
+// $subject = 'Testing PHP mail';
+// $message = 'This mail is sent using the PHP mail function';
+// $headers = 'from: testing@company.com';
+// mail($to_email_address, $message, $headers);
+
+/**
+ * 2. Sanitizing email user input
+ * - Khi tạo form liên hệ và để người dùng điền vào các chi tiết.
+ * Người dùng có thể vô tình hoặc cố ý chèn code vào header, dẫn đến việc gửi thư rác.
+ * - Để bảo vệ hệ thống khỏi các tấn công như vậy, chúng ta có thể tạo một
+ * chức năng tùy chỉnh để cải thiện và xác thực các giá trị trước khi được gửi đi.
+ * - Filter_var: được sử dụng để làm sạch và xác thực dữ liệu đầu vào của người dùng.
+ * - SANITIZATION TYPE: loại sanitization (4 loại)
+ * + FILTER_VALIDATE_EMAIL: trả về true cho địa chỉ email có giá trị
+ * + FILTER_SANITIZE_EMAIL: di chuyển những ký tự bất hợp lệ từ
+ * địa chỉ email
+ * + FILTER_SANITIZE_URL: di chuyển những ký tự bất lệ từ url
+ * + FILTER_SANITIZE_STRING: xóa các tag từ giá trị chuỗi
+ */
+//filter_var($field, SANITIZATION TYPE);
+
+/**
+ * 3. Error
+ * - Error: là 1 lỗi trong mã mà nhà phát triển cần sửa. Khi
+ * một lỗi xảy ra trong php, mặc định là hiển thị thông báo lỗi trong trình duyệt.
+ * - Thông báo này bao gồm tên tập tin, số dòng và mô tả lỗi.
+ * - Compile và parse error (lỗi biên dịch và cú pháp) thường để
+ * phát hiện và sửa chữa, nhưng run-time error có thể khó tìm
+ * hơn vì 1 số tình huống nhất định và những lý do ngoài làm kiểm soát.
+ * - PHP có 4 loại lỗi cơ bản:
+ * + Parse error of syntax error
+ * + Fatal error
+ * + Warning error
+ * + Notice error
+ * -----
+ * 3.1 EXCEPTION HANDLING
+ * - PHP5 đã giới thiệu các ngoại lệ, 1 cơ chế tích hợp để xử lý
+ * các lỗi chương trình trong ngữ cảnh mà chúng xyar ra. Không giống
+ * như các lỗi thường được chỉnh sửa bởi nhà phát triển, các ngoại lệ
+ * được xử lý bởi script.
+ * - Die() và exit()
+ * + Hai hàm này tương đương nhau
+ * + Gọi hàm này để dừng chương trình ngay lập tức
+ * - Try_catch
+ * + Khối try chứa mã có thể gây ra exception (ngoài ra)
+ * + Nếu khối try thực thi thành công, chương trình sẽ tiếp tục chạy sau
+ * câu lệnh try-catch
+ * + Try: hàm sử dụng ngoại lệ, nếu ngoại lệ kích hoạt, 1 ngoại lệ sẽ bị "thrown"
+ * + Throw: Đây là cách kích hoạt exception. Mỗi lần thrown phải có ít nhất 1 catch
+ * + Catch: khối catch truy xuất exception và tạo 1 đối tượng chứa thông tin exception
+ */
+// include 'mypage.php';
+// if(!defined('index')){
+//     die('Không được gọi từ file mypage.php');
+// }
+
+function check($num){
+    if($num > 1){
+        throw new Exception('Giá trị phải nhỏ hơn hoặc bằng 1');
+    }
+    return true;
+    
+}
+try{
+    check(2);
+    echo 'Giá trị phải nhỏ hơn hoặc bằng 1';
+}catch(Exception $e){
+    echo 'Message: ' . $e->getMessage();
+}
+
+finally{
+    echo "Hoàn thành. ";
+}
 ?>
 
 <!-- <form action="" method="post" enctype="multipart/form-data">
